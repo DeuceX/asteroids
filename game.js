@@ -213,7 +213,7 @@ Sprite = function () {
       this.context.lineWidth = 3.0;
       this.context.strokeStyle = 'green';
       this.context.strokeRect(gridx*GRID_SIZE+2, gridy*GRID_SIZE+2, GRID_SIZE-4, GRID_SIZE-4);
-      this.context.strokeStyle = 'black';
+      this.context.strokeStyle = 'red';
       this.context.lineWidth = 1.0;
     }
   };
@@ -661,7 +661,16 @@ Asteroid = function () {
               -4, -10,
               -4,  -5]);
 
-  this.color = 'lightgray';
+  var randomNumber = Math.random() * 10;
+  if (randomNumber < 4) {
+    this.color = 'black';
+  } else {
+    if (randomNumber < 8) {
+      this.color = 'gray';
+    } else {
+      this.color = 'lightgray';
+    }
+  }
   this.solid = true;
   this.visible = true;
   this.scale = 6;
@@ -710,7 +719,7 @@ Explosion = function () {
   this.draw = function () {
     if (this.visible) {
       this.context.save();
-      this.context.strokeStyle = 'red';
+      this.context.strokeStyle = '#7CFC00';
       this.context.lineWidth = 1.0 / this.scale;
       this.context.beginPath();
       for (var i = 0; i < 5; i++) {
